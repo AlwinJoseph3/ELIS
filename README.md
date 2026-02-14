@@ -8,6 +8,8 @@
 
 ELIS is a **Socratic AI Tutor** designed to help developers identify *logic gaps* rather than spoon-feeding answers. Unlike standard coding assistants that generate code, ELIS forces you to articulate your "Stuck Point" and guides you to the solution through targeted questioning.
 
+> 📘 **Deep Dive**: For a comprehensive breakdown of the philosophy, architecture, and development journey, read the [Project Documentary](DETAILS.md).
+
 Built with a **Cyber-Minimalist** aesthetic using a **Deep Space (Zinc/Cyan)** theme, it provides a distraction-free environment for deep debugging.
 
 ---
