@@ -58,8 +58,8 @@ Built with a **Cyber-Minimalist** aesthetic using a **Deep Space (Zinc/Cyan)** t
 
 1.  **Clone the repository**:
     ```bash
-    git clone https://github.com/yourusername/elis-tutor.git
-    cd elis-tutor
+    git clone https://github.com/AlwinJoseph3/ELIS
+    cd ELIS
     ```
 
 2.  **Install dependencies**:
@@ -73,7 +73,7 @@ Built with a **Cyber-Minimalist** aesthetic using a **Deep Space (Zinc/Cyan)** t
     ```
 
 4.  **Open in Browser**:
-    Navigate to `http://localhost:5173`.
+    Navigate to the localhost link from the terminal.
 
 ### Configuration
 
@@ -130,10 +130,5 @@ Contributions are welcome! Whether it's fixing bugs, improving the prompt engine
 
 ---
 
-## 📄 License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
----
 
 > *"The best way to learn is to struggle just enough to find the answer yourself."*
