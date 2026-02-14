@@ -78,7 +78,7 @@ function App() {
             ...history
         ],
         generationConfig: {
-            maxOutputTokens: 800,
+            maxOutputTokens: 2048,
         }
       });
 
@@ -185,6 +185,18 @@ function App() {
       setIsAnalyzing(false);
   };
 
+  const handleMetaphor = async () => {
+      if (!activeSession) return;
+      setIsAnalyzing(true);
+      const metaphorRequest = "Explain the core concept or logic error in my problem using a creative, non-tech metaphor (like cooking, traffic, or architecture). Keep it brief and vivid.";
+      const aiResponseText = await generateAIResponse(metaphorRequest, activeSession.messages, activeSession.problemCode);
+      
+      updateSession(activeSession.id, {
+        messages: [...activeSession.messages, { role: 'assistant', content: aiResponseText }]
+      });
+      setIsAnalyzing(false);
+  };
+
   const handleGiveUp = async () => {
       if (!activeSession) return;
       setIsAnalyzing(true);
@@ -233,6 +245,7 @@ function App() {
         messages={activeSession?.messages || []} 
         onDiagnose={handleDiagnose}
         onHint={handleHint}
+        onMetaphor={handleMetaphor}
         onResend={handleResend}
         onGiveUp={handleGiveUp}
         isAnalyzing={isAnalyzing}

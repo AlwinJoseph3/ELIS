@@ -20,6 +20,7 @@ Built with a **Cyber-Minimalist** aesthetic using a **Deep Space (Zinc/Cyan)** t
 - **Socratic Engine**: Powered by Google's Gemini AI, tuned to ask questions instead of giving answers.
 - **Stuck Point Analysis**: Forces you to articulate exactly *where* your logic breaks down before diving into code.
 - **Hint Mode**: stuck? Get a gentle nudge in the right direction without spoiling the solution.
+- **Metaphor Mode**: Stuck on a concept? Ask ELIS to explain it using a vivid, non-technical analogy (e.g. cooking, traffic).
 - **"I Give Up" Protocol**: When you've truly hit a wall, get the full breakdown and solution.
 
 ### ⚡ Cyber-Minimalist UI

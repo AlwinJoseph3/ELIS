@@ -93,8 +93,15 @@ The project is organized to separate concerns:
 *   **Cyan-500/400**: The "electric" blue used for success states, active borders, and primary buttons. It signifies "intelligence" and "action."
 *   **Modals**: I replaced annoying browser alerts (`window.prompt`) with custom, beautiful React Modals that blur the background and focus your attention.
 
+### **Phase 4: Experience (The "Juice")**
+*   I added **Confetti**! Solving a bug should feel good.
+*   I added **Loading States**: The "pulsing dots" animation while the AI thinks.
+*   I added **Mobile Responsiveness**: A collapsible Sidebar for smaller screens.
+*   I added **Metaphor Mode** for those moments when you need a mental model shift.
+
 ### **4. Interactive Elements**
 *   **Resend Logic**: If the AI gives a bad answer, "Resend" doesn't just ask again. It actually *rewinds time*, deleting the bad AI response from history before asking again.
+*   **Metaphor Mode**: Sometimes technical explanations fail. This button forces the AI to explain the problem using a completely non-technical analogy (like cooking or traffic).
 *   **"I Give Up"**: A dedicated button that bypasses the Socratic method and asks the AI to just explain the solution plainly.
 
 ---
