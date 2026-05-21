@@ -1,137 +1,80 @@
-# 🧠 ELIS (Explain Like I'm Stuck)
+# ELIS — Explain Like I'm Stuck
 
-> **The AI Diagnostic Tutor for Logic, Not Just Code.**
+> *The AI tutor that finds your logic gap — not just your bug.*
 
-![Version](https://img.shields.io/badge/version-0.1.0--alpha-cyan)
-![Tech Stack](https://img.shields.io/badge/stack-React%20%7C%20Vite%20%7C%20Gemini-zinc)
-![License](https://img.shields.io/badge/license-MIT-blue)
-
-ELIS is a **Socratic AI Tutor** designed to help developers identify *logic gaps* rather than spoon-feeding answers. Unlike standard coding assistants that generate code, ELIS forces you to articulate your "Stuck Point" and guides you to the solution through targeted questioning.
-
-> 📘 **Deep Dive**: For a comprehensive breakdown of the philosophy, architecture, and development journey, read the [Project Documentation](DETAILS.md).
-
-Built with a **Cyber-Minimalist** aesthetic using a **Deep Space (Zinc/Cyan)** theme, it provides a distraction-free environment for deep debugging.
+[![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-06B6D4?style=flat&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Gemini API](https://img.shields.io/badge/Gemini_API-4285F4?style=flat&logo=google&logoColor=white)](https://ai.google.dev/)
 
 ---
 
-## ✨ Features
+## What is ELIS?
 
-### 🔍 Diagnostic Core
-- **Socratic Engine**: Powered by Google's Gemini AI, tuned to ask questions instead of giving answers.
-- **Stuck Point Analysis**: Forces you to articulate exactly *where* your logic breaks down before diving into code.
-- **Hint Mode**: stuck? Get a gentle nudge in the right direction without spoiling the solution.
-- **Metaphor Mode**: Stuck on a concept? Ask ELIS to explain it using a vivid, non-technical analogy (e.g. cooking, traffic).
-- **"I Give Up" Protocol**: When you've truly hit a wall, get the full breakdown and solution.
+Most AI tools hand you the answer. ELIS doesn't.
 
-### ⚡ Cyber-Minimalist UI
-- **Split-Screen Workflow**: Dedicated "Problem Context" (left) and "Diagnostic Chat" (right) panes.
-- **Deep Space Theme**: A heavily customized **Zinc-950** & **Cyan-500** palette optimized for late-night coding sessions.
-- **Visual Feedback**:
-  - 🟢 **Animated Status**: Pulse indicators for AI thinking and API status.
-  - 🎉 **Dopamine Hits**: Confetti celebrations when you finally bridge the logic gap.
-  - 📝 **Markdown Support**: Full syntax highlighting for code blocks and formatted text.
+ELIS is a Socratic debugging assistant — it asks you the right questions until *you* figure out what's wrong. The conversation doesn't end until you've identified the root cause yourself. This forces genuine understanding instead of copy-paste fixes.
 
-### 🛡️ Local-First & Privacy
-- **Zero Backend**: All chat history and sessions are stored in your browser's `localStorage`.
-- **BYOK (Bring Your Own Key)**: Your Google Gemini API Key is stored locally on your device. It is never sent to our servers (because we don't have any).
-- **Session Management**: Create, renaming (auto-generated), and delete diagnostic sessions seamlessly.
+Built for developers who want to actually learn, not just ship.
 
 ---
 
-## 🛠️ Tech Stack
+## How It Works
 
-- **Framework**: [React](https://react.dev/) + [Vite](https://vitejs.dev/)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/) (Custom Config)
-- **AI Model**: [Google Gemini Pro](https://ai.google.dev/) via `@google/generative-ai`
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **State**: React Hooks + LocalStorage
-- **Utils**: `date-fns`, `canvas-confetti`, `react-markdown`
+1. You paste your buggy code and describe what's going wrong
+2. ELIS analyses the logical structure — not just syntax
+3. It asks targeted questions that narrow down where your thinking broke
+4. You identify the root cause yourself
+5. Only then does the session close
 
 ---
 
-## 🚀 Getting Started
+## Features
 
-### Prerequisites
-- Node.js (v18 or higher)
-- A specific, burning logic problem you can't solve.
-- A [Google Gemini API Key](https://aistudio.google.com/app/apikey) (Free tier available).
-
-### Installation
-
-1.  **Clone the repository**:
-    ```bash
-    git clone https://github.com/AlwinJoseph3/ELIS
-    cd ELIS
-    ```
-
-2.  **Install dependencies**:
-    ```bash
-    npm install
-    ```
-
-3.  **Run the development server**:
-    ```bash
-    npm run dev
-    ```
-
-4.  **Open in Browser**:
-    Navigate to the localhost link from the terminal.
-
-### Configuration
-
-On the first launch, ELIS will prompt you for your **Gemini API Key**.
-- This key is saved to your browser's `localStorage`.
-- You can reset/remove the key at any time by clicking the **API ACTIVE** indicator in the header.
+- 🧠 **Socratic dialogue engine** — constrained system prompts ensure ELIS never gives direct answers
+- 🔁 **Multi-turn conversations** — full context retained across the entire debugging session
+- 💾 **Local-first persistent chat history** — sessions saved in-browser, no backend required
+- 📡 **API status indicator** — live Gemini API connection feedback
+- 🔄 **Chat reset** — cleanly wipe session and start fresh
+- ⚡ **React + TailwindCSS UI** — fast, responsive, minimal
 
 ---
 
-## 📖 Usage Guide
+## Tech Stack
 
-1.  **The Setup**:
-    - Paste your problematic code or logic description into the **Left Panel**.
-    - This gives the AI context but doesn't trigger a response yet.
-
-2.  **The Stuck Point**:
-    - In the **Right Panel**, type exactly what you are trying to achieve and where you are stuck.
-    - *Example*: "I'm trying to filter this array, but it keeps returning empty objects."
-
-3.  **The Dialogue**:
-    - ELIS will analyze your code and your stuck point.
-    - It will ask a clarifying question to check your assumptions.
-    - Answer the question. Continue the dialogue.
-
-4.  **The Breakthrough**:
-    - Once you identify the flaw in your logic, tell ELIS contextually or fix the code.
-    - If ELIS detects the problem is solved, it will celebrate with you! 🎉
+| Layer | Technology |
+|---|---|
+| Frontend | React, TailwindCSS |
+| AI Integration | Gemini API |
+| Context Management | Advanced system prompting, multi-turn memory |
+| Storage | LocalStorage (client-side persistence) |
 
 ---
 
-## 🎨 Theme System
+## The Hard Part
 
-ELIS uses a custom Tailwind configuration for its "Deep Space" aesthetic:
-
-| Color Token | Hex Code | Usage |
-|:------------|:---------|:------|
-| `bg-zinc-950`| `#09090b` | Main Background |
-| `text-zinc-100`| `#f4f4f5` | Primary Text |
-| `text-cyan-400`| `#22d3ee` | Accents & Highlights |
-| `text-cyan-500`| `#06b6d4` | Interactive Elements |
-| `border-zinc-800`| `#27272a`| Subtle Borders |
+Getting an LLM to *not* answer a question is harder than it sounds. The system prompt architecture uses layered constraints and context modelling to keep ELIS from slipping into answer mode — even when the user directly asks for the solution.
 
 ---
 
-## 🤝 Contributing
+## Getting Started
 
-Contributions are welcome! Whether it's fixing bugs, improving the prompt engineering, or adding new features.
+```bash
+git clone https://github.com/AlwinJoseph3/ELIS.git
+cd ELIS
+npm install
+```
 
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
+Add your Gemini API key to a `.env` file:
+```
+VITE_GEMINI_API_KEY=your_key_here
+```
+
+```bash
+npm run dev
+```
 
 ---
 
+## Built By
 
-> *"The best way to learn is to struggle just enough to find the answer yourself."*
+**Alwin Joseph** — [Portfolio](https://alwinjoseph.netlify.app/) · [LinkedIn](https://www.linkedin.com/in/alwin-joseph-807420221/) · [GitHub](https://github.com/AlwinJoseph3)
