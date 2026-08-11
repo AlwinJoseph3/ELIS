@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { MessageSquare, Lightbulb, Compass, Send, CheckCircle, Sparkles, Flag, RefreshCw } from 'lucide-react';
+import { MessageSquare, Lightbulb, Compass, Send, CheckCircle, Sparkles, Flag, RefreshCw, Brain } from 'lucide-react';
 
 interface ChatInterfaceProps {
   stuckPoint: string;
@@ -8,6 +8,7 @@ interface ChatInterfaceProps {
   messages: Array<{ role: 'user' | 'assistant'; content: string }>;
   onDiagnose: () => void;
   onHint: () => void;
+  onMetaphor: () => void;
   onResend: () => void;
   onGiveUp: () => void;
   isAnalyzing: boolean;
@@ -20,6 +21,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
   messages, 
   onDiagnose,
   onHint,
+  onMetaphor,
   onResend,
   onGiveUp,
   isAnalyzing,
@@ -106,19 +108,26 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
              className="flex items-center gap-2 text-xs uppercase tracking-wider text-zinc-400 hover:text-cyan-400 transition-colors px-4 py-2 rounded border border-zinc-700 hover:border-cyan-500/30 bg-zinc-900/30"
            >
              <Lightbulb className="w-3 h-3" />
-             Hint Mode
+             Hint
+           </button>
+           <button 
+             onClick={onMetaphor}
+             className="flex items-center gap-2 text-xs uppercase tracking-wider text-zinc-400 hover:text-purple-400 transition-colors px-4 py-2 rounded border border-zinc-700 hover:border-purple-500/30 bg-zinc-900/30"
+           >
+             <Brain className="w-3 h-3" />
+             Metaphor
            </button>
            <button 
              onClick={onGiveUp}
              className="flex items-center gap-2 text-xs uppercase tracking-wider text-zinc-400 hover:text-red-400 transition-colors px-4 py-2 rounded border border-zinc-700 hover:border-red-500/30 bg-zinc-900/30"
            >
              <Flag className="w-3 h-3" />
-             I Give Up
+             Give Up
            </button>
          </div>
        )}
 
-      {/* Stuck Point Input */}
+       {/* Stuck Point Input */}
       <div className={`mt-auto relative bg-zinc-900/30 rounded-lg border focus-within:ring-1 transition-all ${isSolved ? 'border-cyan-500/50 shadow-[0_0_15px_rgba(20,184,166,0.1)]' : 'border-zinc-700 focus-within:ring-cyan-400/50 focus-within:border-cyan-400/50'}`}>
          <textarea 
            value={stuckPoint}
