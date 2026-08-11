@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@google/generative-ai": "^0.23.0",
     "canvas-confetti": "^1.9.4",
     "date-fns": "^4.1.0",
     "lucide-react": "^0.294.0",

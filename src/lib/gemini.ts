@@ -1,27 +1,27 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
 
-const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
-
-let genAI: GoogleGenerativeAI | null = null;
-
-if (API_KEY) {
-  genAI = new GoogleGenerativeAI(API_KEY);
+export interface ChatHistoryItem {
+  role: "user" | "model";
+  parts: { text: string }[];
 }
 
-export const getGeminiModel = () => {
-  if (!genAI) {
-   // If no key, we might want to throw or return null to handle in UI
-   // But for now, let's assume the user will provide it.
-   // Or we can initialize lazily.
-   const key = localStorage.getItem('GEMINI_API_KEY') || import.meta.env.VITE_GEMINI_API_KEY;
-   if(key) {
-        genAI = new GoogleGenerativeAI(key);
-   }
-  }
-  
-  if (!genAI) {
-      throw new Error("Gemini API Key is missing. Please set VITE_GEMINI_API_KEY or save it in local storage.");
+// Sends the conversation so far to our backend and gets ELIS's reply back.
+export async function sendChatMessage(
+  systemPrompt: string,
+  history: ChatHistoryItem[],
+  message: string,
+): Promise<string> {
+  const response = await fetch(`${API_URL}/api/chat`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ systemPrompt, history, message }),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData.error || "Failed to reach the AI server.");
   }
 
-  return genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
-};
+  const data = await response.json();
+  return data.text as string;
+}
