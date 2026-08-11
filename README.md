@@ -4,6 +4,8 @@
 
 [![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)](https://reactjs.org/)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-06B6D4?style=flat&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white)](https://expressjs.com/)
 [![Gemini API](https://img.shields.io/badge/Gemini_API-4285F4?style=flat&logo=google&logoColor=white)](https://ai.google.dev/)
 
 ---
@@ -32,7 +34,8 @@ Built for developers who want to actually learn, not just ship.
 
 - 🧠 **Socratic dialogue engine** — constrained system prompts ensure ELIS never gives direct answers
 - 🔁 **Multi-turn conversations** — full context retained across the entire debugging session
-- 💾 **Local-first persistent chat history** — sessions saved in-browser, no backend required
+- 🔒 **Secure API proxy** — a Node.js/Express backend keeps the Gemini API key server-side and rate-limits requests
+- 💾 **Persistent chat history** — sessions saved in-browser so you can pick up where you left off
 - 📡 **API status indicator** — live Gemini API connection feedback
 - 🔄 **Chat reset** — cleanly wipe session and start fresh
 - ⚡ **React + TailwindCSS UI** — fast, responsive, minimal
@@ -43,10 +46,11 @@ Built for developers who want to actually learn, not just ship.
 
 | Layer | Technology |
 |---|---|
-| Frontend | React, TailwindCSS |
-| AI Integration | Gemini API |
+| Frontend | React, TypeScript, TailwindCSS, Vite |
+| Backend | Node.js, Express |
+| AI Integration | Gemini API (proxied server-side) |
 | Context Management | Advanced system prompting, multi-turn memory |
-| Storage | LocalStorage (client-side persistence) |
+| Storage | LocalStorage (client-side session persistence) |
 
 ---
 
@@ -57,22 +61,58 @@ Getting an LLM to *not* answer a question is harder than it sounds. The system p
 ---
 
 ## Getting Started
-
+ 
+ELIS has two parts that run together: a React frontend and a small Express backend that proxies requests to Gemini so the API key never reaches the browser.
+ 
 ```bash
 git clone https://github.com/AlwinJoseph3/ELIS.git
 cd ELIS
+```
+ 
+**1. Set up the backend**
+ 
+```bash
+cd server
 npm install
+cp .env.example .env
 ```
-
-Add your Gemini API key to a `.env` file:
+ 
+Add your Gemini API key to `server/.env`:
+ 
 ```
-VITE_GEMINI_API_KEY=your_key_here
+GEMINI_API_KEY=your_key_here
+PORT=3001
 ```
-
+ 
+Start it:
+ 
+```bash
+node server.js
+```
+ 
+**2. Set up the frontend**
+ 
+In a separate terminal, from the project root:
+ 
+```bash
+npm install
+cp .env.example .env
+```
+ 
+The default `.env` value already points at the local backend:
+ 
+```
+VITE_API_URL=http://localhost:3001
+```
+ 
+Start it:
+ 
 ```bash
 npm run dev
 ```
-
+ 
+With both running, open the app in your browser — it'll route chat requests through the local backend automatically.
+ 
 ---
 
 ## Built By
